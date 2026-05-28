@@ -1,7 +1,7 @@
-class TapeHead(private var position: UInt) {
-    fun getPosition(): Int = position.toInt()
+class TapeHead(private var value: UInt) {
+    val position get() = value.toInt()
 
     fun move() {
-        position += 1u
+        value += 1u
     }
 }

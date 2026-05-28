@@ -1,5 +1,5 @@
-class Halt(private val stop: () -> Unit) : Instruction {
+class Halt(private val halt: () -> Unit) : Instruction {
     override fun execute() {
-        stop()
+        halt()
     }
 }

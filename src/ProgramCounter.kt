@@ -1,10 +1,10 @@
-class ProgramCounter(private var value: UInt, private val instructionCount: Int) {
-    fun getValue() = value.toInt()
+class ProgramCounter(private var currentValue: UInt, private val instructionCount: Int) {
+    val value get() = currentValue.toInt()
 
     fun increment() {
-        val nextValue = value + 1u
+        val nextValue = currentValue + 1u
         if (isInInstructions(nextValue.toInt())) {
-            value = nextValue
+            currentValue = nextValue
         } else {
             throw IllegalArgumentException("Cannot jump to position $nextValue")
         }
@@ -12,7 +12,7 @@ class ProgramCounter(private var value: UInt, private val instructionCount: Int)
 
     fun jump(position: Int) {
         if (isInInstructions(position)) {
-            value = position.toUInt()
+            currentValue = position.toUInt()
         } else {
             throw IllegalArgumentException("Cannot jump to position $position")
         }
